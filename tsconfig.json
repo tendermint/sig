@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "esModuleInterop":              true,
+        "jsx":                          "Preserve",
+        "module":                       "CommonJS",
+        "moduleResolution":             "Node",
+        "noEmit":                       true,
+        "sourceMap":                    true,
+        "strict":                       true,
+        "strictPropertyInitialization": false,
+        "target":                       "ESNext"
+    },
+    "include":         [
+        "index.d.ts",
+        "src",
+        "test"
+    ],
+    "typedocOptions":  {
+        "out":                    "docs",
+        "mode":                   "file",
+        "readme":                 "none",
+        "ignoreCompilerErrors":   true,
+        "includeDeclarations":    true,
+        "excludeNotExported":     true,
+        "excludeExternals":       true,
+        "listInvalidSymbolLinks": true
+    },
+    "typeRoots":       [ "types" ],
+    "lib":             [ "es2017", "esnext.bigint", "dom" ]
+}

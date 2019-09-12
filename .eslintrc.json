@@ -1,0 +1,19 @@
+{
+    "env":           {
+        "commonjs": true
+    },
+    "extends":       [ "plugin:@typescript-eslint/recommended" ],
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "parser":        "@typescript-eslint/parser",
+    "plugins":       [ "@typescript-eslint" ],
+    "rules":         {
+        "@typescript-eslint/camelcase":                        "off",
+        "@typescript-eslint/interface-name-prefix":            "off",
+        "@typescript-eslint/no-empty-interface":               "off",
+        "@typescript-eslint/no-object-literal-type-assertion": "off",
+        "@typescript-eslint/no-use-before-define":             "off",
+        "@typescript-eslint/explicit-function-return-type":    [ "error", { "allowExpressions": true } ]
+    }
+}

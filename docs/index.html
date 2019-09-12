@@ -1,0 +1,842 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@tendermint/sig</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@tendermint/sig</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="index.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @tendermint/sig</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/api.html" class="tsd-kind-icon">API</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/broadcasttx.html" class="tsd-kind-icon">Broadcast<wbr>Tx</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/coin.html" class="tsd-kind-icon">Coin</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/jsonarray.html" class="tsd-kind-icon">JSONArray</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/jsonobject.html" class="tsd-kind-icon">JSONObject</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/keypair.html" class="tsd-kind-icon">Key<wbr>Pair</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/msg.html" class="tsd-kind-icon">Msg</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/pubkey.html" class="tsd-kind-icon">Pub<wbr>Key</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/stdfee.html" class="tsd-kind-icon">Std<wbr>Fee</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/stdsignmsg.html" class="tsd-kind-icon">Std<wbr>Sign<wbr>Msg</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/stdsignature.html" class="tsd-kind-icon">Std<wbr>Signature</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/stdtx.html" class="tsd-kind-icon">Std<wbr>Tx</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/tx.html" class="tsd-kind-icon">Tx</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/txmeta.html" class="tsd-kind-icon">Tx<wbr>Meta</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/wallet.html" class="tsd-kind-icon">Wallet</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="index.html#base64string" class="tsd-kind-icon">Base64<wbr>String</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#bech32string" class="tsd-kind-icon">Bech32<wbr>String</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#binarystring" class="tsd-kind-icon">Binary<wbr>String</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#broadcastmode" class="tsd-kind-icon">Broadcast<wbr>Mode</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#bytes" class="tsd-kind-icon">Bytes</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#jsonstring" class="tsd-kind-icon">JSONString</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#jsonvalue" class="tsd-kind-icon">JSONValue</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable"><a href="index.html#cosmos_path" class="tsd-kind-icon">COSMOS_<wbr>PATH</a></li>
+								<li class="tsd-kind-variable"><a href="index.html#cosmos_prefix" class="tsd-kind-icon">COSMOS_<wbr>PREFIX</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="index.html#arraywrap" class="tsd-kind-icon">array<wbr>Wrap</a></li>
+								<li class="tsd-kind-function"><a href="index.html#base64tobytes" class="tsd-kind-icon">base64<wbr>ToBytes</a></li>
+								<li class="tsd-kind-function"><a href="index.html#bytestobase64" class="tsd-kind-icon">bytes<wbr>ToBase64</a></li>
+								<li class="tsd-kind-function"><a href="index.html#bytestostring" class="tsd-kind-icon">bytes<wbr>ToString</a></li>
+								<li class="tsd-kind-function"><a href="index.html#canonicalizejson" class="tsd-kind-icon">canonicalizeJSON</a></li>
+								<li class="tsd-kind-function"><a href="index.html#instantiate" class="tsd-kind-icon">instantiate</a></li>
+								<li class="tsd-kind-function"><a href="index.html#isobject" class="tsd-kind-icon">is<wbr>Object</a></li>
+								<li class="tsd-kind-function"><a href="index.html#stringtobytes" class="tsd-kind-icon">string<wbr>ToBytes</a></li>
+								<li class="tsd-kind-function"><a href="index.html#tocanonicaljson" class="tsd-kind-icon">to<wbr>CanonicalJSON</a></li>
+								<li class="tsd-kind-function"><a href="index.html#tocanonicaljsonbytes" class="tsd-kind-icon">to<wbr>CanonicalJSONBytes</a></li>
+								<li class="tsd-kind-function"><a href="index.html#tocanonicaljsonstring" class="tsd-kind-icon">to<wbr>CanonicalJSONString</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="base64string" class="tsd-anchor"></a>
+					<h3>Base64<wbr>String</h3>
+					<div class="tsd-signature tsd-kind-icon">Base64<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L9">types.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A Base64-encoded string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="bech32string" class="tsd-anchor"></a>
+					<h3>Bech32<wbr>String</h3>
+					<div class="tsd-signature tsd-kind-icon">Bech32<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L14">types.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A Bech32-encoded string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="binarystring" class="tsd-anchor"></a>
+					<h3>Binary<wbr>String</h3>
+					<div class="tsd-signature tsd-kind-icon">Binary<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L19">types.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A &quot;raw&quot; binary-encoded string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="broadcastmode" class="tsd-anchor"></a>
+					<h3>Broadcast<wbr>Mode</h3>
+					<div class="tsd-signature tsd-kind-icon">Broadcast<wbr>Mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sync"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"async"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"block"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L124">types.ts:124</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A transaction broadcast mode.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="bytes" class="tsd-anchor"></a>
+					<h3>Bytes</h3>
+					<div class="tsd-signature tsd-kind-icon">Bytes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Uint8Array</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L4">types.ts:4</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A <code>Uint8Array</code> of binary data</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="jsonstring" class="tsd-anchor"></a>
+					<h3>JSONString</h3>
+					<div class="tsd-signature tsd-kind-icon">JSONString<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L24">types.ts:24</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A JSON-encoded string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="jsonvalue" class="tsd-anchor"></a>
+					<h3>JSONValue</h3>
+					<div class="tsd-signature tsd-kind-icon">JSONValue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/jsonarray.html" class="tsd-signature-type">JSONArray</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/jsonobject.html" class="tsd-signature-type">JSONObject</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/types.ts#L153">types.ts:153</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A JSON value.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="cosmos_path" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> COSMOS_<wbr>PATH</h3>
+					<div class="tsd-signature tsd-kind-icon">COSMOS_<wbr>PATH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"m/44&#x27;/118&#x27;/0&#x27;/0/0"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;m/44&#x27;/118&#x27;/0&#x27;/0/0&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/index.ts#L237">index.ts:237</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>BIP32 derivation path for Cosmos keys.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="cosmos_prefix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> COSMOS_<wbr>PREFIX</h3>
+					<div class="tsd-signature tsd-kind-icon">COSMOS_<wbr>PREFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"cosmos"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;cosmos&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/index.ts#L231">index.ts:231</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bech32 prefix for Cosmos addresses.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="arraywrap" class="tsd-anchor"></a>
+					<h3>array<wbr>Wrap</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">array<wbr>Wrap<span class="tsd-signature-symbol">(</span>first<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, <span class="tsd-signature-symbol">...</span>rest<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L179">util.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap arguments in an array. If only one argument is provided:</p>
+								</div>
+								<ul>
+									<li>if it&#39;s <code>null</code> or <code>undefined</code>, return an empty array</li>
+									<li>if it&#39;s an array, return a copy of it</li>
+									<li>otherwise, return a new array containing it</li>
+								</ul>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>first: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>first argument</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>rest: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>other arguments</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>an array</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="base64tobytes" class="tsd-anchor"></a>
+					<h3>base64<wbr>ToBytes</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">base64<wbr>ToBytes<span class="tsd-signature-symbol">(</span>base64<span class="tsd-signature-symbol">: </span><a href="index.html#base64string" class="tsd-signature-type">Base64String</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L34">util.ts:34</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Decode bytes from Base64.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>base64: <a href="index.html#base64string" class="tsd-signature-type">Base64String</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>string to decode</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h4>
+							<p>bytes from Base64-encoded string</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="bytestobase64" class="tsd-anchor"></a>
+					<h3>bytes<wbr>ToBase64</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">bytes<wbr>ToBase64<span class="tsd-signature-symbol">(</span>bytes<span class="tsd-signature-symbol">: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#base64string" class="tsd-signature-type">Base64String</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L53">util.ts:53</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Encode bytes as Base64.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>bytes: <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>bytes to encode</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#base64string" class="tsd-signature-type">Base64String</a></h4>
+							<p>Base64-encoded string from bytes</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="bytestostring" class="tsd-anchor"></a>
+					<h3>bytes<wbr>ToString</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">bytes<wbr>ToString<span class="tsd-signature-symbol">(</span>bytes<span class="tsd-signature-symbol">: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L66">util.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Decode a string from bytes.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>will throw if decoding fails</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>bytes: <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>bytes to decode as a string</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>string decoded from bytes</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="canonicalizejson" class="tsd-anchor"></a>
+					<h3>canonicalizeJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">canonicalizeJSON<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L143">util.ts:143</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Canonicalize JSON for signing.</p>
+								</div>
+								<p>This recursively sorts objects by key, removing any keys with <code>null</code> or <code>undefined</code> values, and replaces other
+								<code>undefined</code> values with <code>null</code>.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>any value (but usually a JSON object)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>canonical JSON</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="instantiate" class="tsd-anchor"></a>
+					<h3>instantiate</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">instantiate<span class="tsd-signature-symbol">(</span>randomSeed<span class="tsd-signature-symbol">?: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/api.html" class="tsd-signature-type">API</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/index.ts#L249">index.ts:249</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Asynchronously instantiate the core API.</p>
+								</div>
+								<p>This loads WASM interfaces for sha256, ripemd160, and secp256k1 cryptographic functions.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> randomSeed: <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a 32-byte random seed used to randomize the secp256k1 context</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/api.html" class="tsd-signature-type">API</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>a Promise resolving with the core API</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="isobject" class="tsd-anchor"></a>
+					<h3>is<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Object<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L128">util.ts:128</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if a value is a plain object.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>value to check</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if the value is a plain object, <code>false</code> otherwise</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="stringtobytes" class="tsd-anchor"></a>
+					<h3>string<wbr>ToBytes</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">string<wbr>ToBytes<span class="tsd-signature-symbol">(</span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L78">util.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Encode a string as bytes.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>will throw if encoding fails</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>string: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>string to encode as bytes</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h4>
+							<p>bytes encoded from string</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="tocanonicaljson" class="tsd-anchor"></a>
+					<h3>to<wbr>CanonicalJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>CanonicalJSON<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#jsonvalue" class="tsd-signature-type">JSONValue</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L91">util.ts:91</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Canonicalize JSON for signing, encode it as a string, then decode the string as JSON.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>will throw if encoding or decoding fails</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>JSON value</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#jsonvalue" class="tsd-signature-type">JSONValue</a></h4>
+							<p>the canonical JSON</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="tocanonicaljsonbytes" class="tsd-anchor"></a>
+					<h3>to<wbr>CanonicalJSONBytes</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>CanonicalJSONBytes<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#bytes" class="tsd-signature-type">Bytes</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L116">util.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Canonicalize JSON for signing, encode it as a string, then encode the string as bytes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>JSON value</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#bytes" class="tsd-signature-type">Bytes</a></h4>
+							<p>the canonical JSON bytes</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="tocanonicaljsonstring" class="tsd-anchor"></a>
+					<h3>to<wbr>CanonicalJSONString</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>CanonicalJSONString<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jordansexton/sig/blob/d54b45f/src/util.ts#L104">util.ts:104</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Canonicalize JSON for signing, then encode it as a string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>will throw if encoding fails</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>JSON value</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the canonical JSON string</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals current ">
+						<a href="index.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/api.html" class="tsd-kind-icon">API</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/broadcasttx.html" class="tsd-kind-icon">Broadcast<wbr>Tx</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/coin.html" class="tsd-kind-icon">Coin</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/jsonarray.html" class="tsd-kind-icon">JSONArray</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/jsonobject.html" class="tsd-kind-icon">JSONObject</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/keypair.html" class="tsd-kind-icon">Key<wbr>Pair</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/msg.html" class="tsd-kind-icon">Msg</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pubkey.html" class="tsd-kind-icon">Pub<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/stdfee.html" class="tsd-kind-icon">Std<wbr>Fee</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/stdsignmsg.html" class="tsd-kind-icon">Std<wbr>Sign<wbr>Msg</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/stdsignature.html" class="tsd-kind-icon">Std<wbr>Signature</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/stdtx.html" class="tsd-kind-icon">Std<wbr>Tx</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tx.html" class="tsd-kind-icon">Tx</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/txmeta.html" class="tsd-kind-icon">Tx<wbr>Meta</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/wallet.html" class="tsd-kind-icon">Wallet</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#base64string" class="tsd-kind-icon">Base64<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#bech32string" class="tsd-kind-icon">Bech32<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#binarystring" class="tsd-kind-icon">Binary<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#broadcastmode" class="tsd-kind-icon">Broadcast<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#bytes" class="tsd-kind-icon">Bytes</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#jsonstring" class="tsd-kind-icon">JSONString</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#jsonvalue" class="tsd-kind-icon">JSONValue</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="index.html#cosmos_path" class="tsd-kind-icon">COSMOS_<wbr>PATH</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="index.html#cosmos_prefix" class="tsd-kind-icon">COSMOS_<wbr>PREFIX</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#arraywrap" class="tsd-kind-icon">array<wbr>Wrap</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#base64tobytes" class="tsd-kind-icon">base64<wbr>ToBytes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#bytestobase64" class="tsd-kind-icon">bytes<wbr>ToBase64</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#bytestostring" class="tsd-kind-icon">bytes<wbr>ToString</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#canonicalizejson" class="tsd-kind-icon">canonicalizeJSON</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#instantiate" class="tsd-kind-icon">instantiate</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#isobject" class="tsd-kind-icon">is<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#stringtobytes" class="tsd-kind-icon">string<wbr>ToBytes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#tocanonicaljson" class="tsd-kind-icon">to<wbr>CanonicalJSON</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#tocanonicaljsonbytes" class="tsd-kind-icon">to<wbr>CanonicalJSONBytes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#tocanonicaljsonstring" class="tsd-kind-icon">to<wbr>CanonicalJSONString</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
