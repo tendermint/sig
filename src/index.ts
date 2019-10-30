@@ -295,11 +295,8 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
     }
 
     function createAddress (publicKey: Bytes, prefix: string = COSMOS_PREFIX): Bech32String {
-        const hash = ripemd160.hash(sha256.hash(publicKey));
-
-        // bech32.toWords takes a Buffer, which subclasses Uint8Array
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const words = bech32ToWords(hash as any);
+        const hash  = ripemd160.hash(sha256.hash(publicKey));
+        const words = bech32ToWords(Buffer.from(hash));
 
         return bech32Encode(prefix, words);
     }
