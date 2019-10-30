@@ -208,7 +208,7 @@ export interface API {
      *
      * @returns a transaction broadcast
      */
-    broadcastTx (tx: StdTx, mode?: BroadcastMode): BroadcastTx;
+    createBroadcastTx (tx: StdTx, mode?: BroadcastMode): BroadcastTx;
 }
 
 /**
@@ -366,7 +366,7 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         return verifySignatures(signMsg, tx.signatures);
     }
 
-    function broadcastTx (tx: StdTx, mode: BroadcastMode = 'sync'): BroadcastTx {
+    function createBroadcastTx (tx: StdTx, mode: BroadcastMode = 'sync'): BroadcastTx {
         return {
             tx,
             mode
@@ -388,6 +388,6 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         createSignMsg,
         signTx,
         verifyTx,
-        broadcastTx
+        createBroadcastTx
     };
 }
