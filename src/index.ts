@@ -224,6 +224,21 @@ export const COSMOS_PATH = "m/44'/118'/0'/0/0";
 // @formatter:on
 
 /**
+ * Defines a transaction broadcast mode where the client returns immediately.
+ */
+export const BROADCAST_MODE_SYNC =  'sync';
+
+/**
+ * Defines a transaction broadcast mode where the client waits for a `CheckTx` execution response only.
+ */
+export const BROADCAST_MODE_ASYNC = 'async';
+
+/**
+ * Defines a transaction broadcast mode where the client waits for the transaction to be committed in a block.
+ */
+export const BROADCAST_MODE_BLOCK = 'block';
+
+/**
  * Asynchronously instantiate the core API.
  *
  * This loads WASM interfaces for sha256, ripemd160, and secp256k1 cryptographic functions.
@@ -366,7 +381,7 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         return verifySignatures(signMsg, tx.signatures);
     }
 
-    function createBroadcastTx (tx: StdTx, mode: BroadcastMode = 'sync'): BroadcastTx {
+    function createBroadcastTx (tx: StdTx, mode: BroadcastMode = BROADCAST_MODE_SYNC): BroadcastTx {
         return {
             tx,
             mode

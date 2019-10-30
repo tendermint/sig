@@ -115,15 +115,16 @@ export interface StdTx extends Tx {
 
 /**
  * A transaction broadcast mode.
+ *
+ * - `'sync'`  defines a transaction broadcasting mode where the client returns immediately.
+ * - `'async'` defines a transaction broadcasting mode where the client waits for a `CheckTx` execution response only.
+ * - `'block'` defines a transaction broadcasting mode where the client waits for the transaction to be committed in a block.
  */
 export type BroadcastMode = 'sync' | 'async' | 'block';
 
 /**
- * A signed transaction for broadcasting.
+ * A signed transaction with a mode for broadcast.
  */
-
-// the broadcast body consists of the signed tx and a return type
-// returnType can be block (inclusion in block), async (right away), sync (after checkTx has passed)
 export interface BroadcastTx {
     tx: StdTx;
     mode: BroadcastMode;
