@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "esModuleInterop":              true,
-        "jsx":                          "Preserve",
         "module":                       "CommonJS",
         "moduleResolution":             "Node",
         "noEmit":                       true,
@@ -13,7 +12,8 @@
     "include":         [
         "index.d.ts",
         "src",
-        "test"
+        "test",
+        "types"
     ],
     "typedocOptions":  {
         "out":                    "docs",
@@ -24,7 +24,5 @@
         "excludeNotExported":     true,
         "excludeExternals":       true,
         "listInvalidSymbolLinks": true
-    },
-    "typeRoots":       [ "types" ],
-    "lib":             [ "es2017", "esnext.bigint", "dom" ]
+    }
 }
