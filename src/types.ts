@@ -64,17 +64,21 @@ export interface StdFee {
 }
 
 /**
- * A transaction with metadata for signing.
- *
- * Essentially the union of {@link Tx|`Tx`} and {@link TxMeta|`TxMeta`} with slightly different fields (`msg` / `msgs`).
+ * Metadata for signing a transaction.
  */
-export interface StdSignMsg {
+export interface SignMeta {
     account_number: string;
     chain_id: string;
+    sequence: string;
+}
+
+/**
+ * A transaction with metadata for signing.
+ */
+export interface StdSignMsg extends SignMeta {
     fee: StdFee;
     memo: string;
     msgs: Msg[];
-    sequence: string;
 }
 
 /**
@@ -100,15 +104,6 @@ export interface Tx {
     msg: Msg[];
     fee: StdFee;
     memo: string;
-}
-
-/**
- * Metadata for signing a transaction.
- */
-export interface TxMeta {
-    account_number: string;
-    chain_id: string;
-    sequence: string;
 }
 
 /**

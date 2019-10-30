@@ -29,7 +29,7 @@ import {
     StdSignMsg,
     StdTx,
     Tx,
-    TxMeta,
+    SignMeta,
     Wallet
 } from './types';
 
@@ -173,12 +173,12 @@ export interface API {
      *
      * @returns
      */
-    createSignMsg (tx: Tx, meta: TxMeta): StdSignMsg;
+    createSignMsg (tx: Tx, meta: SignMeta): StdSignMsg;
 
     /**
      * Sign a transaction.
      *
-     * This combines the {@link Tx|`Tx`} and {@link TxMeta|`TxMeta`} into a {@link StdSignMsg|`StdSignMsg`}, signs it,
+     * This combines the {@link Tx|`Tx`} and {@link SignMeta|`SignMeta`} into a {@link StdSignMsg|`StdSignMsg`}, signs it,
      * and attaches the signature to the transaction. If the transaction is already signed, the signature will be
      * added to the existing signatures.
      *
@@ -188,7 +188,7 @@ export interface API {
      *
      * @returns a signed transaction
      */
-    signTx (tx: Tx | StdTx, meta: TxMeta, keyPair: KeyPair): StdTx;
+    signTx (tx: Tx | StdTx, meta: SignMeta, keyPair: KeyPair): StdTx;
 
     /**
      * Verify a signed transaction's signatures.
@@ -198,7 +198,7 @@ export interface API {
      *
      * @returns `true` if all signatures are valid and match, `false` otherwise or if no signatures were provided
      */
-    verifyTx (tx: StdTx, meta: TxMeta): boolean;
+    verifyTx (tx: StdTx, meta: SignMeta): boolean;
 
     /**
      * Prepare a signed transaction for broadcast.
@@ -338,7 +338,7 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         }
     }
 
-    function createSignMsg (tx: Tx, meta: TxMeta): StdSignMsg {
+    function createSignMsg (tx: Tx, meta: SignMeta): StdSignMsg {
         return {
             account_number: meta.account_number,
             chain_id:       meta.chain_id,
@@ -349,7 +349,7 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         };
     }
 
-    function signTx (tx: Tx | StdTx, meta: TxMeta, keyPair: KeyPair): StdTx {
+    function signTx (tx: Tx | StdTx, meta: SignMeta, keyPair: KeyPair): StdTx {
         const signMsg    = createSignMsg(tx, meta);
         const signature  = createSignature(signMsg, keyPair);
         const signatures = ('signatures' in tx) ? [...tx.signatures, signature] : [signature];
@@ -360,7 +360,7 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
         };
     }
 
-    function verifyTx (tx: StdTx, meta: TxMeta): boolean {
+    function verifyTx (tx: StdTx, meta: SignMeta): boolean {
         const signMsg = createSignMsg(tx, meta);
 
         return verifySignatures(signMsg, tx.signatures);
