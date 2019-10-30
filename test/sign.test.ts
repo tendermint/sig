@@ -1,10 +1,4 @@
-import { instantiate, API } from '../';
-
-let api: API;
-
-beforeAll(async function (): Promise<void> {
-    api = await instantiate();
-});
+import * as Sig from '../';
 
 const tx = {
     'msg':  [
@@ -34,7 +28,7 @@ const tx = {
     'memo': '(Sent via Lunie)'
 };
 
-const txMeta = {
+const signMeta = {
     account_number: '1',
     chain_id:       'cosmos',
     sequence:       '0'
@@ -42,9 +36,10 @@ const txMeta = {
 
 describe('Sig', () => {
     it('creates wallet, signs, and verifies', () => {
-        const wallet   = api.createWallet();
-        const signedTx = api.signTx(tx, txMeta, wallet);
-        const valid    = api.verifyTx(signedTx, txMeta);
+        const mnemonic = 'trouble salon husband push melody usage fine ensure blade deal miss twin';
+        const wallet   = Sig.createWalletFromMnemonic(mnemonic);
+        const signedTx = Sig.signTx(tx, signMeta, wallet);
+        const valid    = Sig.verifyTx(signedTx, signMeta);
 
         expect(valid).toBe(true);
     });
