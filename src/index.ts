@@ -1,8 +1,4 @@
-import {
-    generateMnemonic,
-    mnemonicToSeedSync,
-    validateMnemonic
-} from 'bip39';
+import { mnemonicToSeedSync } from 'bip39';
 
 import {
     BIP32Interface,
@@ -53,16 +49,6 @@ export * from './util';
  * Must be asynchronously {@link instantiate|instantiated}.
  */
 export interface API {
-    /**
-     * Create a {@link Wallet|`Wallet`} from a random mnemonic.
-     *
-     * @param   prefix - Bech32 human readable part, defaulting to {@link COSMOS_PREFIX|`COSMOS_PREFIX`}
-     * @param   path   - BIP32 derivation path, defaulting to {@link COSMOS_PATH|`COSMOS_PATH`}
-     *
-     * @returns a keypair and address derived from a random mnemonic
-     */
-    createWallet (prefix?: string, path?: string): Wallet;
-
     /**
      * Create a {@link Wallet|`Wallet`} from a known mnemonic.
      *
@@ -255,12 +241,6 @@ export function instantiate (randomSeed?: Bytes): Promise<API> {
 }
 
 function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): API {
-    function createWallet (prefix: string = COSMOS_PREFIX, path: string = COSMOS_PATH): Wallet {
-        const mnemonic = generateMnemonic();
-
-        return createWalletFromMnemonic(mnemonic, prefix, path);
-    }
-
     function createWalletFromMnemonic (mnemonic: string, prefix: string = COSMOS_PREFIX, path: string = COSMOS_PATH): Wallet {
         const masterKey = createMasterKeyFromMnemonic(mnemonic);
 
@@ -280,10 +260,6 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
     }
 
     function createMasterKeyFromMnemonic (mnemonic: string): BIP32Interface {
-        if (!validateMnemonic(mnemonic)) {
-            throw new Error('invalid mnemonic');
-        }
-
         const seed = mnemonicToSeedSync(mnemonic);
 
         return fromSeed(seed);
@@ -398,7 +374,6 @@ function api ([sha256, ripemd160, secp256k1]: [Sha256, Ripemd160, Secp256k1]): A
     }
 
     return {
-        createWallet,
         createWalletFromMnemonic,
         createWalletFromMasterKey,
         createMasterKeyFromMnemonic,
