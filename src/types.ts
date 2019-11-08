@@ -64,17 +64,21 @@ export interface StdFee {
 }
 
 /**
- * A transaction with metadata for signing.
- *
- * Essentially the union of {@link Tx|`Tx`} and {@link TxMeta|`TxMeta`} with slightly different fields (`msg` / `msgs`).
+ * Metadata for signing a transaction.
  */
-export interface StdSignMsg {
+export interface SignMeta {
     account_number: string;
     chain_id: string;
+    sequence: string;
+}
+
+/**
+ * A transaction with metadata for signing.
+ */
+export interface StdSignMsg extends SignMeta {
     fee: StdFee;
     memo: string;
     msgs: Msg[];
-    sequence: string;
 }
 
 /**
@@ -103,15 +107,6 @@ export interface Tx {
 }
 
 /**
- * Metadata for signing a transaction.
- */
-export interface TxMeta {
-    account_number: string;
-    chain_id: string;
-    sequence: string;
-}
-
-/**
  * A signed transaction.
  */
 export interface StdTx extends Tx {
@@ -120,15 +115,16 @@ export interface StdTx extends Tx {
 
 /**
  * A transaction broadcast mode.
+ *
+ * - `'sync'`  defines a transaction broadcasting mode where the client returns immediately.
+ * - `'async'` defines a transaction broadcasting mode where the client waits for a `CheckTx` execution response only.
+ * - `'block'` defines a transaction broadcasting mode where the client waits for the transaction to be committed in a block.
  */
 export type BroadcastMode = 'sync' | 'async' | 'block';
 
 /**
- * A signed transaction for broadcasting.
+ * A signed transaction with a mode for broadcast.
  */
-
-// the broadcast body consists of the signed tx and a return type
-// returnType can be block (inclusion in block), async (right away), sync (after checkTx has passed)
 export interface BroadcastTx {
     tx: StdTx;
     mode: BroadcastMode;

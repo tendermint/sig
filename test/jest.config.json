@@ -1,4 +1,9 @@
 {
+    "globals":            {
+        "ts-jest": {
+            "diagnostics": false
+        }
+    },
     "verbose":            true,
     "testMatch":          [ "**/*.test.[jt]s" ],
     "transform":          {
