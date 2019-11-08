@@ -183,10 +183,10 @@ describe('util', () => {
     describe('isObject', () => {
         for (const [value, expected] of [
             [{}, true],
+            [Object.create(null), true],
             [new Date, false],
             [[], false],
-            [() => {
-            }, false],
+            [function () {}, false],
             ['', false],
             [0, false],
             [true, false],
