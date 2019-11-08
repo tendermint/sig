@@ -16,7 +16,7 @@ Supported in Node.js and browsers.
 
 @TODO: add brief description of documentation
 
-**https://jordansexton.github.io/sig/**
+**https://cosmos.github.io/sig/**
 
 ### Install
 
