@@ -65,7 +65,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A signed transaction.</p>
+						<p>A signed transaction.
+						A signed transaction.</p>
 					</div>
 				</div>
 			</section>
@@ -74,6 +75,9 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="tx.html" class="tsd-signature-type">Tx</a>
+					</li>
+					<li>
+						<span class="tsd-signature-type">Tx</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">StdTx</span>
@@ -89,9 +93,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="stdtx.html#fee" class="tsd-kind-icon">fee</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="stdtx.html#memo" class="tsd-kind-icon">memo</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="stdtx.html#msg" class="tsd-kind-icon">msg</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="stdtx.html#fee" class="tsd-kind-icon">fee</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="stdtx.html#memo" class="tsd-kind-icon">memo</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="stdtx.html#msg" class="tsd-kind-icon">msg</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="stdtx.html#signatures" class="tsd-kind-icon">signatures</a></li>
 							</ul>
 						</section>
@@ -100,46 +104,50 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 					<a name="fee" class="tsd-anchor"></a>
 					<h3>fee</h3>
 					<div class="tsd-signature tsd-kind-icon">fee<span class="tsd-signature-symbol">:</span> <a href="stdfee.html" class="tsd-signature-type">StdFee</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tx.html">Tx</a>.<a href="tx.html#fee">fee</a></p>
+						<p>Overrides Tx.fee</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/cosmos/sig/blob/b9c2718/src/types.ts#L105">src/types.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/cosmos/sig/blob/f60776e/src/types.ts#L105">src/types.ts:105</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 					<a name="memo" class="tsd-anchor"></a>
 					<h3>memo</h3>
 					<div class="tsd-signature tsd-kind-icon">memo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tx.html">Tx</a>.<a href="tx.html#memo">memo</a></p>
+						<p>Overrides Tx.memo</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/cosmos/sig/blob/b9c2718/src/types.ts#L106">src/types.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/cosmos/sig/blob/f60776e/src/types.ts#L106">src/types.ts:106</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 					<a name="msg" class="tsd-anchor"></a>
 					<h3>msg</h3>
 					<div class="tsd-signature tsd-kind-icon">msg<span class="tsd-signature-symbol">:</span> <a href="msg.html" class="tsd-signature-type">Msg</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="tx.html">Tx</a>.<a href="tx.html#msg">msg</a></p>
+						<p>Overrides Tx.msg</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/cosmos/sig/blob/b9c2718/src/types.ts#L104">src/types.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/cosmos/sig/blob/f60776e/src/types.ts#L104">src/types.ts:104</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="signatures" class="tsd-anchor"></a>
 					<h3>signatures</h3>
-					<div class="tsd-signature tsd-kind-icon">signatures<span class="tsd-signature-symbol">:</span> <a href="stdsignature.html" class="tsd-signature-type">StdSignature</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">signatures<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">StdSignature</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/cosmos/sig/blob/b9c2718/src/types.ts#L113">src/types.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/cosmos/sig/blob/f60776e/src/types.ts#L113">src/types.ts:113</a></li>
+							<li>Defined in types/src/types.d.ts:97</li>
 						</ul>
 					</aside>
 				</section>
@@ -160,13 +168,13 @@
 					<li class="current tsd-kind-interface">
 						<a href="stdtx.html" class="tsd-kind-icon">Std<wbr>Tx</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="stdtx.html#fee" class="tsd-kind-icon">fee</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="stdtx.html#memo" class="tsd-kind-icon">memo</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="stdtx.html#msg" class="tsd-kind-icon">msg</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
