@@ -63,7 +63,6 @@
     },
     "files":           [
         "dist",
-        "lib/**/*.{ts,js}",
         "src/**/*.{ts,js}",
         "types/**/*.{ts,js}",
         "index.js",
