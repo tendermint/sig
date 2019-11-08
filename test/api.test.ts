@@ -145,6 +145,11 @@ const cosmosPublicKey = new Uint8Array([
     121
 ]);
 
+const cosmosKeyPair = {
+    publicKey:  cosmosPublicKey,
+    privateKey: cosmosPrivateKey
+};
+
 const customPrefix = 'custom';
 
 const customPath = "m/0'/0/0/0";
@@ -222,6 +227,66 @@ const customPublicKey = new Uint8Array([
     74
 ]);
 
+const tx = {
+    'msg':  [
+        {
+            'type':  'cosmos-sdk/MsgSend',
+            'value': {
+                'from_address': cosmosAddress,
+                'to_address':   cosmosAddress,
+                'amount':       [
+                    {
+                        'denom':  'stake',
+                        'amount': '1000000'
+                    }
+                ]
+            }
+        }
+    ],
+    'fee':  {
+        'amount': [
+            {
+                'denom':  'stake',
+                'amount': '1'
+            }
+        ],
+        'gas':    '100'
+    },
+    'memo': 'This is a test.'
+};
+
+const signMeta = {
+    'account_number': '1',
+    'chain_id':       'cosmos',
+    'sequence':       '0'
+};
+
+const knownSignMsg = {
+    'account_number': signMeta['account_number'],
+    'chain_id':       signMeta['chain_id'],
+    'fee':            tx['fee'],
+    'memo':           tx['memo'],
+    'msgs':           tx['msg'],
+    'sequence':       signMeta['sequence']
+};
+
+const knownStdSignature = {
+    'signature': 'zbaibf4Dh4wwM0spbZlnUWR9mGN8HwFUqyp29Mf7Ysoa0iVKUZuXrYAfTNP7pmwhMmAgp/3dolIiitQVt9tQIw==',
+    'pub_key':   {
+        'type':  'tendermint/PubKeySecp256k1',
+        'value': 'AzykdzV0sacCAYNWIR04V2MY9GRxsnJZj1+xnclJv255'
+    }
+};
+
+const knownStdTx = {
+    ...tx,
+    'signatures': [knownStdSignature]
+};
+
+const knownBytes = new Uint8Array([]);
+
+const knownSignature = new Uint8Array([]);
+
 describe('Sig', () => {
     describe('createWalletFromMnemonic', () => {
         it('with default prefix and path', () => {
@@ -289,43 +354,118 @@ describe('Sig', () => {
         });
     });
 
-    describe.skip('signTx', () => {
+    describe('signTx', () => {
+        it('with tx, signMeta, and keyPair', () => {
+            const stdTx = Sig.signTx(tx, signMeta, cosmosKeyPair);
+            expect(stdTx).toEqual(knownStdTx);
+        });
 
+        it.skip('with stdTx, signMeta, and keyPair', () => {
+
+        });
     });
 
-    describe.skip('createSignMsg', () => {
-
+    describe('createSignMsg', () => {
+        it('with tx and signMeta', () => {
+            const signMsg = Sig.createSignMsg(tx, signMeta);
+            expect(signMsg).toEqual(knownSignMsg);
+        });
     });
 
-    describe.skip('createSignature', () => {
-
+    describe('createSignature', () => {
+        it('with signMsg and keyPair', () => {
+            const stdSignature = Sig.createSignature(knownSignMsg, cosmosKeyPair);
+            expect(stdSignature).toEqual(knownStdSignature);
+        });
     });
 
     describe.skip('createSignatureBytes', () => {
+        it.skip('with signMsg and privateKey', () => {
 
+        });
     });
 
     describe.skip('sign', () => {
-
+        it('with bytes and privateKey', () => {
+            const signature = Sig.sign(knownBytes, cosmosPrivateKey);
+            expect(signature).toBeBytes(knownSignature);
+        });
     });
 
-    describe.skip('verifyTx', () => {
+    describe('verifyTx', () => {
+        it('with stdTx and signMeta', () => {
+            const valid = Sig.verifyTx(knownStdTx, signMeta);
+            expect(valid).toBe(true);
+        });
 
+        it.skip('with empty signatures', () => {
+
+        });
+
+        it.skip('with invalid signatures', () => {
+
+        });
+
+        it.skip('with non-matching signatures', () => {
+
+        });
     });
 
     describe.skip('verifySignatures', () => {
+        it.skip('with signMsg and signatures', () => {
 
+        });
+
+        it.skip('with signMsg and empty signatures', () => {
+
+        });
+
+        it.skip('with signMsg and invalid signatures', () => {
+
+        });
+
+        it.skip('with signMsg and non-matching signatures', () => {
+
+        });
     });
 
     describe.skip('verifySignature', () => {
-
+        it('with signMsg and signature', () => {
+            const valid = Sig.verifySignature(knownSignMsg, knownStdSignature);
+            expect(valid).toBe(true);
+        });
     });
 
     describe.skip('verifySignatureBytes', () => {
+        it('with signMsg, signature, and publicKey', () => {
+            const valid = Sig.verifySignatureBytes(knownSignMsg, knownSignature, cosmosPublicKey);
+            expect(valid).toBe(true);
+        });
 
+        it.skip('with invalid signature', () => {
+
+        });
+
+        it.skip('with invalid publicKey', () => {
+
+        });
     });
 
-    describe.skip('createBroadcastTx', () => {
+    describe('createBroadcastTx', () => {
+        it('with stdTx', () => {
+            const broadcastTx = Sig.createBroadcastTx(knownStdTx);
+            expect(broadcastTx).toEqual({
+                tx:   knownStdTx,
+                mode: 'sync'
+            });
+        });
 
+        it('with stdTx and broadcastMode', () => {
+            const broadcastTx = Sig.createBroadcastTx(knownStdTx, 'async');
+            expect(broadcastTx).toEqual({
+                tx:   knownStdTx,
+                mode: 'async'
+            });
+        });
     });
 });
