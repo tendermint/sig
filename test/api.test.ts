@@ -239,6 +239,14 @@ describe('Sig', () => {
         });
     });
 
+    describe('createMasterKeyFromMnemonic', () => {
+        it('with known mnemonic', () => {
+            const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
+            expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
+            expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
+        });
+    });
+
     describe('createWalletFromMasterKey', () => {
         it('with default prefix and path', () => {
             const wallet = Sig.createWalletFromMasterKey(knownMasterKey);
@@ -252,14 +260,6 @@ describe('Sig', () => {
             expect(wallet.address).toBe(customAddress);
             expect(wallet.privateKey).toBeBytes(customPrivateKey);
             expect(wallet.publicKey).toBeBytes(customPublicKey);
-        });
-    });
-
-    describe('createMasterKeyFromMnemonic', () => {
-        it('with known mnemonic', () => {
-            const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
-            expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
-            expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
         });
     });
 

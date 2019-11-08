@@ -86,6 +86,20 @@ export function createWalletFromMnemonic (mnemonic: string, prefix: string = COS
 }
 
 /**
+ * Derive a BIP32 master key from a mnemonic.
+ *
+ * @param   mnemonic - BIP39 mnemonic seed
+ *
+ * @returns BIP32 master key
+ * @throws  will throw if the provided mnemonic is invalid
+ */
+export function createMasterKeyFromMnemonic (mnemonic: string): BIP32Interface {
+    const seed = mnemonicToSeedSync(mnemonic);
+
+    return fromSeed(seed);
+}
+
+/**
  * Create a {@link Wallet|`Wallet`} from a BIP32 master key.
  *
  * @param   masterKey - BIP32 master key
@@ -104,20 +118,6 @@ export function createWalletFromMasterKey (masterKey: BIP32Interface, prefix: st
         privateKey,
         publicKey
     };
-}
-
-/**
- * Derive a BIP32 master key from a mnemonic.
- *
- * @param   mnemonic - BIP39 mnemonic seed
- *
- * @returns BIP32 master key
- * @throws  will throw if the provided mnemonic is invalid
- */
-export function createMasterKeyFromMnemonic (mnemonic: string): BIP32Interface {
-    const seed = mnemonicToSeedSync(mnemonic);
-
-    return fromSeed(seed);
 }
 
 /**
@@ -160,126 +160,6 @@ export function createAddress (publicKey: Bytes, prefix: string = COSMOS_PREFIX)
 }
 
 /**
- * Sign the sha256 hash of `bytes` with a secp256k1 private key.
- *
- * @param   bytes      - bytes to hash and sign
- * @param   privateKey - private key bytes
- *
- * @returns signed hash of the bytes
- * @throws  will throw if the provided private key is invalid
- */
-export function sign (bytes: Bytes, privateKey: Bytes): Bytes {
-    const hash = createHash('sha256').update(bytes).digest();
-
-    const { signature } = secp256k1Sign(hash, Buffer.from(privateKey));
-
-    return signature;
-}
-
-/**
- * Create signature bytes from a {@link StdSignMsg|`StdSignMsg`}.
- *
- * @param   signMsg    - transaction with metadata for signing
- * @param   privateKey - private key bytes
- *
- * @returns signature bytes
- */
-export function createSignatureBytes (signMsg: StdSignMsg, privateKey: Bytes): Bytes {
-    const bytes = toCanonicalJSONBytes(signMsg);
-
-    return sign(bytes, privateKey);
-}
-
-/**
- * Verify a signature against a {@link StdSignMsg|`StdSignMsg`}.
- *
- * @param   signMsg   - transaction with metadata for signing
- * @param   signature - signature bytes
- * @param   publicKey - public key bytes
- *
- * @returns `true` if the signature is valid and matches, `false` otherwise
- */
-export function verifySignatureBytes (signMsg: StdSignMsg, signature: Bytes, publicKey: Bytes): boolean {
-    const bytes = toCanonicalJSONBytes(signMsg);
-    const hash  = createHash('sha256').update(bytes).digest();
-
-    return secp256k1Verify(hash, Buffer.from(signature), Buffer.from(publicKey));
-}
-
-/**
- * Create a signature from a {@link StdSignMsg|`StdSignMsg`}.
- *
- * @param   signMsg - transaction with metadata for signing
- * @param   keyPair - public and private key pair (or {@link Wallet|`Wallet`})
- *
- * @returns a signature and corresponding public key
- */
-export function createSignature (signMsg: StdSignMsg, { privateKey, publicKey }: KeyPair): StdSignature {
-    const signatureBytes = createSignatureBytes(signMsg, privateKey);
-
-    return {
-        signature: bytesToBase64(signatureBytes),
-        pub_key:   {
-            type:  'tendermint/PubKeySecp256k1',
-            value: bytesToBase64(publicKey)
-        }
-    };
-}
-
-/**
- * Verify a {@link StdSignMsg|`StdSignMsg`} against a {@link StdSignature|`StdSignature`}.
- *
- * @param   signMsg   - transaction with metadata for signing
- * @param   signature - signature
- *
- * @returns `true` if the signature is valid and matches, `false` otherwise
- */
-export function verifySignature (signMsg: StdSignMsg, signature: StdSignature): boolean {
-    const signatureBytes = base64ToBytes(signature.signature);
-    const publicKey      = base64ToBytes(signature.pub_key.value);
-
-    return verifySignatureBytes(signMsg, signatureBytes, publicKey);
-}
-
-/**
- * Verify a {@link StdSignMsg|`StdSignMsg`} against multiple {@link StdSignature|`StdSignature`}s.
- *
- * @param   signMsg    - transaction with metadata for signing
- * @param   signatures - signatures
- *
- * @returns `true` if all signatures are valid and match, `false` otherwise or if no signatures were provided
- */
-export function verifySignatures (signMsg: StdSignMsg, signatures: StdSignature[]): boolean {
-    if (signatures.length > 0) {
-        return signatures.every(function (signature: StdSignature): boolean {
-            return verifySignature(signMsg, signature);
-        });
-    }
-    else {
-        return false;
-    }
-}
-
-/**
- * Create a transaction with metadata for signing.
- *
- * @param   tx   - unsigned transaction
- * @param   meta - metadata for signing
- *
- * @returns
- */
-export function createSignMsg (tx: Tx, meta: SignMeta): StdSignMsg {
-    return {
-        account_number: meta.account_number,
-        chain_id:       meta.chain_id,
-        fee:            tx.fee,
-        memo:           tx.memo,
-        msgs:           tx.msg,
-        sequence:       meta.sequence
-    };
-}
-
-/**
  * Sign a transaction.
  *
  * This combines the {@link Tx|`Tx`} and {@link SignMeta|`SignMeta`} into a {@link StdSignMsg|`StdSignMsg`}, signs it,
@@ -304,6 +184,76 @@ export function signTx (tx: Tx | StdTx, meta: SignMeta, keyPair: KeyPair): StdTx
 }
 
 /**
+ * Create a transaction with metadata for signing.
+ *
+ * @param   tx   - unsigned transaction
+ * @param   meta - metadata for signing
+ *
+ * @returns
+ */
+export function createSignMsg (tx: Tx, meta: SignMeta): StdSignMsg {
+    return {
+        account_number: meta.account_number,
+        chain_id:       meta.chain_id,
+        fee:            tx.fee,
+        memo:           tx.memo,
+        msgs:           tx.msg,
+        sequence:       meta.sequence
+    };
+}
+
+/**
+ * Create a signature from a {@link StdSignMsg|`StdSignMsg`}.
+ *
+ * @param   signMsg - transaction with metadata for signing
+ * @param   keyPair - public and private key pair (or {@link Wallet|`Wallet`})
+ *
+ * @returns a signature and corresponding public key
+ */
+export function createSignature (signMsg: StdSignMsg, { privateKey, publicKey }: KeyPair): StdSignature {
+    const signatureBytes = createSignatureBytes(signMsg, privateKey);
+
+    return {
+        signature: bytesToBase64(signatureBytes),
+        pub_key:   {
+            type:  'tendermint/PubKeySecp256k1',
+            value: bytesToBase64(publicKey)
+        }
+    };
+}
+
+/**
+ * Create signature bytes from a {@link StdSignMsg|`StdSignMsg`}.
+ *
+ * @param   signMsg    - transaction with metadata for signing
+ * @param   privateKey - private key bytes
+ *
+ * @returns signature bytes
+ */
+export function createSignatureBytes (signMsg: StdSignMsg, privateKey: Bytes): Bytes {
+    const bytes = toCanonicalJSONBytes(signMsg);
+
+    return sign(bytes, privateKey);
+}
+
+/**
+ * Sign the sha256 hash of `bytes` with a secp256k1 private key.
+ *
+ * @param   bytes      - bytes to hash and sign
+ * @param   privateKey - private key bytes
+ *
+ * @returns signed hash of the bytes
+ * @throws  will throw if the provided private key is invalid
+ */
+export function sign (bytes: Bytes, privateKey: Bytes): Bytes {
+    const hash = createHash('sha256').update(bytes).digest();
+
+    const { signature } = secp256k1Sign(hash, Buffer.from(privateKey));
+
+    return signature;
+}
+
+/**
  * Verify a signed transaction's signatures.
  *
  * @param   tx   - signed transaction
@@ -315,6 +265,56 @@ export function verifyTx (tx: StdTx, meta: SignMeta): boolean {
     const signMsg = createSignMsg(tx, meta);
 
     return verifySignatures(signMsg, tx.signatures);
+}
+
+/**
+ * Verify a {@link StdSignMsg|`StdSignMsg`} against multiple {@link StdSignature|`StdSignature`}s.
+ *
+ * @param   signMsg    - transaction with metadata for signing
+ * @param   signatures - signatures
+ *
+ * @returns `true` if all signatures are valid and match, `false` otherwise or if no signatures were provided
+ */
+export function verifySignatures (signMsg: StdSignMsg, signatures: StdSignature[]): boolean {
+    if (signatures.length > 0) {
+        return signatures.every(function (signature: StdSignature): boolean {
+            return verifySignature(signMsg, signature);
+        });
+    }
+    else {
+        return false;
+    }
+}
+
+/**
+ * Verify a {@link StdSignMsg|`StdSignMsg`} against a {@link StdSignature|`StdSignature`}.
+ *
+ * @param   signMsg   - transaction with metadata for signing
+ * @param   signature - signature
+ *
+ * @returns `true` if the signature is valid and matches, `false` otherwise
+ */
+export function verifySignature (signMsg: StdSignMsg, signature: StdSignature): boolean {
+    const signatureBytes = base64ToBytes(signature.signature);
+    const publicKey      = base64ToBytes(signature.pub_key.value);
+
+    return verifySignatureBytes(signMsg, signatureBytes, publicKey);
+}
+
+/**
+ * Verify a signature against a {@link StdSignMsg|`StdSignMsg`}.
+ *
+ * @param   signMsg   - transaction with metadata for signing
+ * @param   signature - signature bytes
+ * @param   publicKey - public key bytes
+ *
+ * @returns `true` if the signature is valid and matches, `false` otherwise
+ */
+export function verifySignatureBytes (signMsg: StdSignMsg, signature: Bytes, publicKey: Bytes): boolean {
+    const bytes = toCanonicalJSONBytes(signMsg);
+    const hash  = createHash('sha256').update(bytes).digest();
+
+    return secp256k1Verify(hash, Buffer.from(signature), Buffer.from(publicKey));
 }
 
 /**
