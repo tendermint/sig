@@ -1,4 +1,4 @@
-import * as Sig from '../';
+import * as Sig from '../src';
 
 const tx = {
     'msg':  [
