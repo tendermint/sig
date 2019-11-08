@@ -288,4 +288,44 @@ describe('Sig', () => {
             expect(address).toBe(customAddress);
         });
     });
+
+    describe.skip('signTx', () => {
+
+    });
+
+    describe.skip('createSignMsg', () => {
+
+    });
+
+    describe.skip('createSignature', () => {
+
+    });
+
+    describe.skip('createSignatureBytes', () => {
+
+    });
+
+    describe.skip('sign', () => {
+
+    });
+
+    describe.skip('verifyTx', () => {
+
+    });
+
+    describe.skip('verifySignatures', () => {
+
+    });
+
+    describe.skip('verifySignature', () => {
+
+    });
+
+    describe.skip('verifySignatureBytes', () => {
+
+    });
+
+    describe.skip('createBroadcastTx', () => {
+
+    });
 });
