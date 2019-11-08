@@ -6,21 +6,15 @@ A signing library for Cosmos.
 
 Supported in Node.js and browsers.
 
-@TODO: expand description
-
 ### Demo
 
 @TODO: add demo links
 
 ### Documentation
 
-@TODO: add brief description of documentation
-
 **https://cosmos.github.io/sig/**
 
 ### Install
-
-@TODO: move repo and publish package
 
 Please note that the NPM package name is `@tendermint/sig` rather than `@cosmos/sig`.
 
@@ -47,7 +41,7 @@ const tx = {
             amount: '0',
             denom:  ''
         }],
-        gas:    '21906'
+        gas:    '10000'
     },
     memo: '',
     msgs: [{
@@ -79,8 +73,8 @@ const signMeta = {
 
 const mnemonic = 'trouble salon husband push melody usage fine ensure blade deal miss twin';
 const wallet   = createWalletFromMnemonic(mnemonic);
-const signedTx = signTx(tx, signMeta, wallet);
-const isValid  = verifyTx(signedTx, signMeta);
+const stdTx    = signTx(tx, signMeta, wallet);
+const isValid  = verifyTx(stdTx, signMeta);
 ```
 
 ### Contributing
