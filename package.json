@@ -20,7 +20,7 @@
         "dirs":           "mkdir ./dist",
         "dist:dev":       "NODE_ENV=development yarn build",
         "dist:prod":      "NODE_ENV=production yarn build && yarn gzip",
-        "docs":           "typedoc src/*.ts types/**/*.ts",
+        "docs":           "typedoc types/**/*.ts",
         "gzip":           "gzip -kf ./dist/*.{js,map}",
         "lint":           "eslint --ext .ts,.js .",
         "nuke":           "rm -rf **/node_modules yarn.lock",
