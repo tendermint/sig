@@ -1,5 +1,5 @@
 import { fromSeed } from 'bip32';
-import * as Sig from '../src';
+import * as Sig from '../';
 
 const knownMnemonic = 'rich banner swift brush fury tunnel pause forest dose color luggage length';
 

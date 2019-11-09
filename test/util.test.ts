@@ -1,4 +1,4 @@
-import * as Sig from '../src';
+import * as Sig from '../';
 
 const knownBase64 = 'AA==';
 const knownBytes  = [0];
