@@ -12,7 +12,7 @@
     "engines":         {
         "node": ">=10"
     },
-    "version":         "0.1.0",
+    "version":         "0.1.1",
     "main":            "index.js",
     "scripts":         {
         "build":          "webpack --config build --progress --colors --display-error-details",
