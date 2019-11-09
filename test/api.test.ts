@@ -307,6 +307,7 @@ describe('Sig', () => {
     describe('createMasterKeyFromMnemonic', () => {
         it('with known mnemonic', () => {
             const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
             expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
         });

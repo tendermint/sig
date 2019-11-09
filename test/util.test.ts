@@ -186,6 +186,7 @@ describe('util', () => {
             [Object.create(null), true],
             [new Date, false],
             [[], false],
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             [function () {}, false],
             ['', false],
             [0, false],
