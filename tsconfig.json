@@ -6,7 +6,6 @@
         "esModuleInterop":              true,
         "module":                       "CommonJS",
         "moduleResolution":             "Node",
-        "sourceMap":                    true,
         "strict":                       true,
         "strictPropertyInitialization": false,
         "target":                       "ESNext"
