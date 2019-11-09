@@ -80,6 +80,40 @@ export function stringToBytes (string: string): Bytes {
 }
 
 /**
+ * Canonicalize JSON for signing.
+ *
+ * This recursively sorts objects by key, removing any keys with `null` or `undefined` values, and replaces other
+ * `undefined` values with `null`.
+ *
+ * @param   value - any value (but usually a JSON object)
+ *
+ * @returns canonical JSON
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function toCanonicalJSON (value: any): any {
+    if (isObject(value)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const sorted = {} as { [key: string]: any };
+        const keys   = Object.keys(value).sort();
+
+        for (const key of keys) {
+            const keyValue = value[key];
+            if (keyValue != null) {
+                sorted[key] = toCanonicalJSON(keyValue);
+            }
+        }
+
+        return sorted;
+    }
+
+    if (Array.isArray(value)) {
+        return value.map(toCanonicalJSON);
+    }
+
+    return (value === undefined) ? null : value;
+}
+
+/**
  * Canonicalize JSON for signing, encode it as a string, then decode the string as JSON.
  *
  * @param   value - JSON value
@@ -88,8 +122,9 @@ export function stringToBytes (string: string): Bytes {
  * @throws  will throw if encoding or decoding fails
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function toCanonicalJSON (value: any): JSONValue {
-    return JSON.parse(toCanonicalJSONString(value));
+export function toCanonicalJSONClone (value: any): JSONValue {
+    const string = toCanonicalJSONString(value);
+    return JSON.parse(string);
 }
 
 /**
@@ -102,7 +137,8 @@ export function toCanonicalJSON (value: any): JSONValue {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function toCanonicalJSONString (value: any): string {
-    return JSON.stringify(canonicalizeJSON(value));
+    const json = toCanonicalJSON(value);
+    return JSON.stringify(json);
 }
 
 /**
@@ -114,7 +150,8 @@ export function toCanonicalJSONString (value: any): string {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function toCanonicalJSONBytes (value: any): Bytes {
-    return stringToBytes(toCanonicalJSONString(value));
+    const string = toCanonicalJSONString(value);
+    return stringToBytes(string);
 }
 
 /**
@@ -127,40 +164,6 @@ export function toCanonicalJSONBytes (value: any): Bytes {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isObject (value: any): boolean {
     return (Object.prototype.toString.call(value) === '[object Object]');
-}
-
-/**
- * Canonicalize JSON for signing.
- *
- * This recursively sorts objects by key, removing any keys with `null` or `undefined` values, and replaces other
- * `undefined` values with `null`.
- *
- * @param   value - any value (but usually a JSON object)
- *
- * @returns canonical JSON
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function canonicalizeJSON (value: any): any {
-    if (isObject(value)) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const sorted = {} as { [key: string]: any };
-        const keys   = Object.keys(value).sort();
-
-        for (const key of keys) {
-            const keyValue = value[key];
-            if (keyValue != null) {
-                sorted[key] = canonicalizeJSON(keyValue);
-            }
-        }
-
-        return sorted;
-    }
-
-    if (Array.isArray(value)) {
-        return value.map(canonicalizeJSON);
-    }
-
-    return (value === undefined) ? null : value;
 }
 
 /**
