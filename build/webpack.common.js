@@ -1,4 +1,5 @@
-const path = require('path');
+const path    = require('path');
+const webpack = require('webpack');
 
 const root       = path.resolve(`${ __dirname }/..`);
 const srcRoot    = `${ root }/src`;
@@ -50,5 +51,11 @@ module.exports = {
                 }
             ]
         }]
-    }
+    },
+    plugins: [
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/wordlists\//,
+            contextRegExp:  /\/node_modules\/bip39\/src$/
+        })
+    ]
 };
