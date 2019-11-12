@@ -849,8 +849,9 @@ describe('verifySignatures', () => {
         expect(valid).toBe(true);
     });
 
-    it.skip('with signMsg and empty signatures', () => {
-
+    it('with signMsg and empty signatures', () => {
+        const valid = Sig.verifySignatures(knownSignMsg, []);
+        expect(valid).toBe(false);
     });
 
     it.skip('with signMsg and invalid signatures', () => {
