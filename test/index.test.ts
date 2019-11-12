@@ -869,11 +869,11 @@ describe('verifySignature', () => {
         expect(valid).toBe(true);
     });
 
-    it.skip('with signMsg and invalid signatures', () => {
+    it.skip('with signMsg and invalid signature', () => {
 
     });
 
-    it.skip('with signMsg and non-matching signatures', () => {
+    it.skip('with signMsg and non-matching signature', () => {
 
     });
 });
