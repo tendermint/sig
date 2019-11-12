@@ -37,7 +37,7 @@ import { createWalletFromMnemonic } from '@tendermint/sig';
 
 const mnemonic = 'trouble salon husband push melody usage fine ensure blade deal miss twin';
 
-const wallet = createWalletFromMnemonic(mnemonic);
+const wallet = createWalletFromMnemonic(mnemonic); // BIP39 mnemonic string
 /*
 {
     address:    'cosmos1asm039pzjkkg9ghlvj267p5g3whtxd2t4leg5c',
@@ -58,20 +58,12 @@ const wallet = createWalletFromMnemonic(mnemonic);
 */
 ```
 
-##### Derive an address from a public key
+##### Derive a Bech32 address from a public key
 
 ```typescript
 import { createAddress } from '@tendermint/sig';
 
-const publicKey = new Uint8Array([
-      3, 159,  35,  41, 130,  48,   3, 247,
-    139, 242, 113,  41, 200, 176,  73,  27,
-    102, 232, 113, 226,  80, 184, 107, 144,
-    217,  88, 151,  21,  22, 185,  68,  28,
-    211
-]);
-
-const address = createAddress(publicKey);
+const address = createAddress(publicKey); // Buffer or Uint8Array
 // 'cosmos1asm039pzjkkg9ghlvj267p5g3whtxd2t4leg5c'
 ```
 
@@ -107,24 +99,7 @@ const signMeta = {
     sequence:       '0'
 };
 
-const wallet = {
-    address:    'cosmos1asm039pzjkkg9ghlvj267p5g3whtxd2t4leg5c',
-    privateKey: new Uint8Array([
-        202,  60, 140, 106, 178, 180,  60,   1,
-        186,  68, 206, 224, 207, 179,  79,  81,
-        119,  98,  98,   1, 207, 170, 209, 161,
-          1, 124, 151, 236, 205, 151,   3, 229
-    ]),
-    publicKey:  new Uint8Array([
-          3, 159,  35,  41, 130,  48,   3, 247,
-        139, 242, 113,  41, 200, 176,  73,  27,
-        102, 232, 113, 226,  80, 184, 107, 144,
-        217,  88, 151,  21,  22, 185,  68,  28,
-        211
-    ])
-};
-
-const stdTx = signTx(tx, signMeta, wallet);
+const stdTx = signTx(tx, signMeta, wallet); // Wallet or privateKey / publicKey pair; see example above
 /*
 {
     fee:        { amount: [{ amount: '0', denom: '' }], gas: '10000' },
@@ -155,35 +130,7 @@ const stdTx = signTx(tx, signMeta, wallet);
 ```typescript
 import { verifyTx } from '@tendermint/sig';
 
-const stdTx = {
-    fee:        { amount: [{ amount: '0', denom: '' }], gas: '10000' },
-    memo:       '',
-    msgs:       [{
-        type:  'cosmos-sdk/Send',
-        value: {
-            inputs:  [{
-                'address': 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
-                'coins':   [{ amount: '1', denom: 'STAKE' }]
-            }],
-            outputs: [{
-                address: 'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
-                coins:   [{ amount: '1', denom: 'STAKE' }]
-            }]
-        }
-    }],
-    signatures: [{
-        signature: 'uwQQzsubfzk/EwedKbZI/IDiXru5M6GuEBA2DZ+U7LVBwO80MFhU6ULA/5yjT8F0Bdx113VzS/GtbntazzNPwQ==',
-        pub_key:   { type: 'tendermint/PubKeySecp256k1', value: 'A58jKYIwA/eL8nEpyLBJG2boceJQuGuQ2ViXFRa5RBzT' }
-    }]
-};
-
-const signMeta = {
-    account_number: '1',
-    chain_id:       'cosmos',
-    sequence:       '0'
-};
-
-const valid = verifyTx(stdTx, signMeta);
+const valid = verifyTx(stdTx, signMeta); // signed transaction and metadata; see example above
 // true
 ```
 
