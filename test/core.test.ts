@@ -718,195 +718,197 @@ const knownSignature = new Uint8Array([
     35
 ]);
 
-describe('createWalletFromMnemonic', () => {
-    it('with default prefix and path', () => {
-        const wallet = Sig.createWalletFromMnemonic(knownMnemonic);
-        expect(wallet.address).toBe(cosmosAddress);
-        expect(wallet.privateKey).toBeBytes(cosmosPrivateKey);
-        expect(wallet.publicKey).toBeBytes(cosmosPublicKey);
-    });
+describe('core', () => {
+    describe('createWalletFromMnemonic', () => {
+        it('with default prefix and path', () => {
+            const wallet = Sig.createWalletFromMnemonic(knownMnemonic);
+            expect(wallet.address).toBe(cosmosAddress);
+            expect(wallet.privateKey).toBeBytes(cosmosPrivateKey);
+            expect(wallet.publicKey).toBeBytes(cosmosPublicKey);
+        });
 
-    it('with custom prefix and path', () => {
-        const wallet = Sig.createWalletFromMnemonic(knownMnemonic, customPrefix, customPath);
-        expect(wallet.address).toBe(customAddress);
-        expect(wallet.privateKey).toBeBytes(customPrivateKey);
-        expect(wallet.publicKey).toBeBytes(customPublicKey);
-    });
-});
-
-describe('createMasterKeyFromMnemonic', () => {
-    it('with known mnemonic', () => {
-        const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
-        expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
-    });
-});
-
-describe('createWalletFromMasterKey', () => {
-    it('with default prefix and path', () => {
-        const wallet = Sig.createWalletFromMasterKey(knownMasterKey);
-        expect(wallet.address).toBe(cosmosAddress);
-        expect(wallet.privateKey).toBeBytes(cosmosPrivateKey);
-        expect(wallet.publicKey).toBeBytes(cosmosPublicKey);
-    });
-
-    it('with custom prefix and path', () => {
-        const wallet = Sig.createWalletFromMasterKey(knownMasterKey, customPrefix, customPath);
-        expect(wallet.address).toBe(customAddress);
-        expect(wallet.privateKey).toBeBytes(customPrivateKey);
-        expect(wallet.publicKey).toBeBytes(customPublicKey);
-    });
-});
-
-describe('createKeyPairFromMasterKey', () => {
-    it('with default path', () => {
-        const keyPair = Sig.createKeyPairFromMasterKey(knownMasterKey);
-        expect(keyPair.privateKey).toBeBytes(cosmosPrivateKey);
-        expect(keyPair.publicKey).toBeBytes(cosmosPublicKey);
-    });
-
-    it('with custom path', () => {
-        const keyPair = Sig.createKeyPairFromMasterKey(knownMasterKey, customPath);
-        expect(keyPair.privateKey).toBeBytes(customPrivateKey);
-        expect(keyPair.publicKey).toBeBytes(customPublicKey);
-    });
-});
-
-describe('createAddress', () => {
-    it('with default prefix', () => {
-        const address = Sig.createAddress(cosmosPublicKey);
-        expect(address).toBe(cosmosAddress);
-    });
-
-    it('with custom prefix', () => {
-        const address = Sig.createAddress(customPublicKey, customPrefix);
-        expect(address).toBe(customAddress);
-    });
-});
-
-describe('signTx', () => {
-    it('with tx, signMeta, and keyPair', () => {
-        const stdTx = Sig.signTx(tx, signMeta, cosmosKeyPair);
-        expect(stdTx).toEqual(knownStdTx);
-    });
-
-    it.skip('with stdTx, signMeta, and keyPair', () => {
-
-    });
-});
-
-describe('createSignMsg', () => {
-    it('with tx and signMeta', () => {
-        const signMsg = Sig.createSignMsg(tx, signMeta);
-        expect(signMsg).toEqual(knownSignMsg);
-    });
-});
-
-describe('createSignature', () => {
-    it('with signMsg and keyPair', () => {
-        const stdSignature = Sig.createSignature(knownSignMsg, cosmosKeyPair);
-        expect(stdSignature).toEqual(knownStdSignature);
-    });
-});
-
-describe('createSignatureBytes', () => {
-    it('with signMsg and privateKey', () => {
-        const signature = Sig.createSignatureBytes(knownSignMsg, cosmosPrivateKey);
-        expect(signature).toBeBytes(knownSignature);
-    });
-});
-
-describe('sign', () => {
-    it('with bytes and privateKey', () => {
-        const signature = Sig.sign(knownBytes, cosmosPrivateKey);
-        expect(signature).toBeBytes(knownSignature);
-    });
-});
-
-describe('verifyTx', () => {
-    it('with stdTx and signMeta', () => {
-        const valid = Sig.verifyTx(knownStdTx, signMeta);
-        expect(valid).toBe(true);
-    });
-
-    it.skip('with empty signatures', () => {
-
-    });
-
-    it.skip('with invalid signatures', () => {
-
-    });
-
-    it.skip('with non-matching signatures', () => {
-
-    });
-});
-
-describe('verifySignatures', () => {
-    it('with signMsg and signatures', () => {
-        const valid = Sig.verifySignatures(knownSignMsg, [knownStdSignature]);
-        expect(valid).toBe(true);
-    });
-
-    it('with signMsg and empty signatures', () => {
-        const valid = Sig.verifySignatures(knownSignMsg, []);
-        expect(valid).toBe(false);
-    });
-
-    it.skip('with signMsg and invalid signatures', () => {
-
-    });
-
-    it.skip('with signMsg and non-matching signatures', () => {
-
-    });
-});
-
-describe('verifySignature', () => {
-    it('with signMsg and signature', () => {
-        const valid = Sig.verifySignature(knownSignMsg, knownStdSignature);
-        expect(valid).toBe(true);
-    });
-
-    it.skip('with signMsg and invalid signature', () => {
-
-    });
-
-    it.skip('with signMsg and non-matching signature', () => {
-
-    });
-});
-
-describe('verifySignatureBytes', () => {
-    it('with signMsg, signature, and publicKey', () => {
-        const valid = Sig.verifySignatureBytes(knownSignMsg, knownSignature, cosmosPublicKey);
-        expect(valid).toBe(true);
-    });
-
-    it.skip('with signMsg, invalid signature, and publicKey', () => {
-
-    });
-
-    it.skip('with signMsg, signature, and invalid publicKey', () => {
-
-    });
-});
-
-describe('createBroadcastTx', () => {
-    it('with stdTx', () => {
-        const broadcastTx = Sig.createBroadcastTx(knownStdTx);
-        expect(broadcastTx).toEqual({
-            tx:   knownStdTx,
-            mode: 'sync'
+        it('with custom prefix and path', () => {
+            const wallet = Sig.createWalletFromMnemonic(knownMnemonic, customPrefix, customPath);
+            expect(wallet.address).toBe(customAddress);
+            expect(wallet.privateKey).toBeBytes(customPrivateKey);
+            expect(wallet.publicKey).toBeBytes(customPublicKey);
         });
     });
 
-    it('with stdTx and broadcastMode', () => {
-        const broadcastTx = Sig.createBroadcastTx(knownStdTx, 'async');
-        expect(broadcastTx).toEqual({
-            tx:   knownStdTx,
-            mode: 'async'
+    describe('createMasterKeyFromMnemonic', () => {
+        it('with known mnemonic', () => {
+            const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
+            expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
+        });
+    });
+
+    describe('createWalletFromMasterKey', () => {
+        it('with default prefix and path', () => {
+            const wallet = Sig.createWalletFromMasterKey(knownMasterKey);
+            expect(wallet.address).toBe(cosmosAddress);
+            expect(wallet.privateKey).toBeBytes(cosmosPrivateKey);
+            expect(wallet.publicKey).toBeBytes(cosmosPublicKey);
+        });
+
+        it('with custom prefix and path', () => {
+            const wallet = Sig.createWalletFromMasterKey(knownMasterKey, customPrefix, customPath);
+            expect(wallet.address).toBe(customAddress);
+            expect(wallet.privateKey).toBeBytes(customPrivateKey);
+            expect(wallet.publicKey).toBeBytes(customPublicKey);
+        });
+    });
+
+    describe('createKeyPairFromMasterKey', () => {
+        it('with default path', () => {
+            const keyPair = Sig.createKeyPairFromMasterKey(knownMasterKey);
+            expect(keyPair.privateKey).toBeBytes(cosmosPrivateKey);
+            expect(keyPair.publicKey).toBeBytes(cosmosPublicKey);
+        });
+
+        it('with custom path', () => {
+            const keyPair = Sig.createKeyPairFromMasterKey(knownMasterKey, customPath);
+            expect(keyPair.privateKey).toBeBytes(customPrivateKey);
+            expect(keyPair.publicKey).toBeBytes(customPublicKey);
+        });
+    });
+
+    describe('createAddress', () => {
+        it('with default prefix', () => {
+            const address = Sig.createAddress(cosmosPublicKey);
+            expect(address).toBe(cosmosAddress);
+        });
+
+        it('with custom prefix', () => {
+            const address = Sig.createAddress(customPublicKey, customPrefix);
+            expect(address).toBe(customAddress);
+        });
+    });
+
+    describe('signTx', () => {
+        it('with tx, signMeta, and keyPair', () => {
+            const stdTx = Sig.signTx(tx, signMeta, cosmosKeyPair);
+            expect(stdTx).toEqual(knownStdTx);
+        });
+
+        it.skip('with stdTx, signMeta, and keyPair', () => {
+
+        });
+    });
+
+    describe('createSignMsg', () => {
+        it('with tx and signMeta', () => {
+            const signMsg = Sig.createSignMsg(tx, signMeta);
+            expect(signMsg).toEqual(knownSignMsg);
+        });
+    });
+
+    describe('createSignature', () => {
+        it('with signMsg and keyPair', () => {
+            const stdSignature = Sig.createSignature(knownSignMsg, cosmosKeyPair);
+            expect(stdSignature).toEqual(knownStdSignature);
+        });
+    });
+
+    describe('createSignatureBytes', () => {
+        it('with signMsg and privateKey', () => {
+            const signature = Sig.createSignatureBytes(knownSignMsg, cosmosPrivateKey);
+            expect(signature).toBeBytes(knownSignature);
+        });
+    });
+
+    describe('sign', () => {
+        it('with bytes and privateKey', () => {
+            const signature = Sig.sign(knownBytes, cosmosPrivateKey);
+            expect(signature).toBeBytes(knownSignature);
+        });
+    });
+
+    describe('verifyTx', () => {
+        it('with stdTx and signMeta', () => {
+            const valid = Sig.verifyTx(knownStdTx, signMeta);
+            expect(valid).toBe(true);
+        });
+
+        it.skip('with empty signatures', () => {
+
+        });
+
+        it.skip('with invalid signatures', () => {
+
+        });
+
+        it.skip('with non-matching signatures', () => {
+
+        });
+    });
+
+    describe('verifySignatures', () => {
+        it('with signMsg and signatures', () => {
+            const valid = Sig.verifySignatures(knownSignMsg, [knownStdSignature]);
+            expect(valid).toBe(true);
+        });
+
+        it('with signMsg and empty signatures', () => {
+            const valid = Sig.verifySignatures(knownSignMsg, []);
+            expect(valid).toBe(false);
+        });
+
+        it.skip('with signMsg and invalid signatures', () => {
+
+        });
+
+        it.skip('with signMsg and non-matching signatures', () => {
+
+        });
+    });
+
+    describe('verifySignature', () => {
+        it('with signMsg and signature', () => {
+            const valid = Sig.verifySignature(knownSignMsg, knownStdSignature);
+            expect(valid).toBe(true);
+        });
+
+        it.skip('with signMsg and invalid signature', () => {
+
+        });
+
+        it.skip('with signMsg and non-matching signature', () => {
+
+        });
+    });
+
+    describe('verifySignatureBytes', () => {
+        it('with signMsg, signature, and publicKey', () => {
+            const valid = Sig.verifySignatureBytes(knownSignMsg, knownSignature, cosmosPublicKey);
+            expect(valid).toBe(true);
+        });
+
+        it.skip('with signMsg, invalid signature, and publicKey', () => {
+
+        });
+
+        it.skip('with signMsg, signature, and invalid publicKey', () => {
+
+        });
+    });
+
+    describe('createBroadcastTx', () => {
+        it('with stdTx', () => {
+            const broadcastTx = Sig.createBroadcastTx(knownStdTx);
+            expect(broadcastTx).toEqual({
+                tx:   knownStdTx,
+                mode: 'sync'
+            });
+        });
+
+        it('with stdTx and broadcastMode', () => {
+            const broadcastTx = Sig.createBroadcastTx(knownStdTx, 'async');
+            expect(broadcastTx).toEqual({
+                tx:   knownStdTx,
+                mode: 'async'
+            });
         });
     });
 });
