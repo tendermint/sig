@@ -1,14 +1,36 @@
-# `sig`
+# Sig
 
-**EXPERIMENTAL. DO NOT USE THIS YET.**
+Sig is a signing library for Cosmos, supported in Node.js and browsers.
 
-A signing library for Cosmos.
+Sig provides JavaScript functions and TypeScript types for
 
-Supported in Node.js and browsers.
+  - Deriving a wallet (private key, public key, and address) from a mnemonic
+  - Deriving an address from a public key
+  - Structuring a transaction
+  - Signing a transaction
+  - Verifying signatures for a transaction
+  - Preparing a transaction for broadcast
+
+Sig **does not** provide functions for
+
+  - Generating a mnemonic
+  - Storing keys or other secrets
+  - Obtaining data from a chain
+  - Broadcasting transactions
+
+Sig is designed to work well with other libraries like
+  - [`bip39`](https://github.com/bitcoinjs/bip39)
+  - [`bip32`](https://github.com/bitcoinjs/bip32)
+  - [`@tendermint/amino-js`](https://github.com/cosmos/amino-js)
+
+Sig is experimental and not recommended for use in production yet. Please help us test and improve it!
+
+As always, please be careful to protect any mnemonic phrases, passwords, and private keys.
 
 ### Demo
 
-@TODO: add demo links
+  - [Node.js](https://repl.it/repls/DodgerblueAshamedTest)
+  - [Browser](https://jsfiddle.net/pbc6zkeh/)
 
 ### Documentation
 
@@ -18,19 +40,19 @@ Supported in Node.js and browsers.
 
 Please note that the NPM package name is `@tendermint/sig` rather than `@cosmos/sig`.
 
-##### Yarn
+#### Yarn
 ```shell
 yarn add @tendermint/sig
 ```
 
-##### NPM
+#### NPM
 ```shell
 npm install --save @tendermint/sig
 ```
 
 ### Usage
 
-##### Derive a wallet (private key, public key, and address) from a mnemonic
+#### Derive a wallet (private key, public key, and address) from a mnemonic
 
 ```typescript
 import { createWalletFromMnemonic } from '@tendermint/sig';
@@ -58,7 +80,7 @@ const wallet = createWalletFromMnemonic(mnemonic); // BIP39 mnemonic string
 */
 ```
 
-##### Derive a Bech32 address from a public key
+#### Derive a Bech32 address from a public key
 
 ```typescript
 import { createAddress } from '@tendermint/sig';
@@ -67,7 +89,7 @@ const address = createAddress(publicKey); // Buffer or Uint8Array
 // 'cosmos1asm039pzjkkg9ghlvj267p5g3whtxd2t4leg5c'
 ```
 
-##### Sign a transaction
+#### Sign a transaction
 
 ```typescript
 import { signTx } from '@tendermint/sig';
@@ -125,7 +147,7 @@ const stdTx = signTx(tx, signMeta, wallet); // Wallet or privateKey / publicKey 
 */
 ```
 
-##### Verify a transaction
+#### Verify a transaction
 
 ```typescript
 import { verifyTx } from '@tendermint/sig';
@@ -136,8 +158,32 @@ const valid = verifyTx(stdTx, signMeta); // signed transaction and metadata; see
 
 Please see the [documentation](https://cosmos.github.io/sig/) for the full API.
 
+### Building
+
+```shell
+git clone https://github.com/cosmos/sig.git
+cd sig
+yarn install
+yarn setup
+yarn test
+```
+
 ### Contributing
 
-`sig` is very new! Questions, feedback, use cases, issues, and code are all very, very welcome.
+Sig is very new! Questions, feedback, use cases, issues, and code are all very, very welcome.
 
 Thank you for helping us help you help us all. 🎁
+
+### Alternatives
+
+A number of other projects exist that help with signing for Cosmos.
+
+Please check them out and see if they are right for you!
+
+- [`@lunie/cosmos-keys`](https://github.com/luniehq/cosmos-keys)
+- [`@cosmostation/cosmosjs`](https://github.com/cosmostation/cosmosjs)
+- [`@iov/cosmos`](https://github.com/iov-one/iov-core/tree/1220-cosmos-codec/packages/iov-cosmos)
+- [`@everett-protocol/cosmosjs`](https://github.com/everett-protocol/cosmosjs)
+- [`js-cosmos-wallet`](https://github.com/okwme/js-cosmos-wallet)
+- [`cosmos-client-ts`](https://github.com/lcnem/cosmos-client-ts)
+- [`lotion`](https://github.com/nomic-io/lotion)
