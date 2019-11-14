@@ -52,14 +52,15 @@ import {
  * Create a {@link Wallet|`Wallet`} from a known mnemonic.
  *
  * @param   mnemonic - BIP39 mnemonic seed
+ * @param   password - optional password from {@link https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#from-mnemonic-to-seed|the BIP39 spec}
  * @param   prefix   - Bech32 human readable part, defaulting to {@link COSMOS_PREFIX|`COSMOS_PREFIX`}
  * @param   path     - BIP32 derivation path, defaulting to {@link COSMOS_PATH|`COSMOS_PATH`}
  *
  * @returns a keypair and address derived from the provided mnemonic
  * @throws  will throw if the provided mnemonic is invalid
  */
-export function createWalletFromMnemonic (mnemonic: string, prefix: string = COSMOS_PREFIX, path: string = COSMOS_PATH): Wallet {
-    const masterKey = createMasterKeyFromMnemonic(mnemonic);
+export function createWalletFromMnemonic (mnemonic: string, password?: string, prefix: string = COSMOS_PREFIX, path: string = COSMOS_PATH): Wallet {
+    const masterKey = createMasterKeyFromMnemonic(mnemonic, password);
 
     return createWalletFromMasterKey(masterKey, prefix, path);
 }
@@ -68,12 +69,13 @@ export function createWalletFromMnemonic (mnemonic: string, prefix: string = COS
  * Derive a BIP32 master key from a mnemonic.
  *
  * @param   mnemonic - BIP39 mnemonic seed
+ * @param   password - optional password from {@link https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#from-mnemonic-to-seed|the BIP39 spec}
  *
  * @returns BIP32 master key
  * @throws  will throw if the provided mnemonic is invalid
  */
-export function createMasterKeyFromMnemonic (mnemonic: string): BIP32Interface {
-    const seed = bip39MnemonicToSeed(mnemonic);
+export function createMasterKeyFromMnemonic (mnemonic: string, password?: string): BIP32Interface {
+    const seed = bip39MnemonicToSeed(mnemonic, password);
 
     return bip32FromSeed(seed);
 }

@@ -720,15 +720,18 @@ const knownSignature = new Uint8Array([
 
 describe('core', () => {
     describe('createWalletFromMnemonic', () => {
-        it('with default prefix and path', () => {
+        it('with default password, prefix, and path', () => {
             const wallet = Sig.createWalletFromMnemonic(knownMnemonic);
             expect(wallet.address).toBe(cosmosAddress);
             expect(wallet.privateKey).toBeBytes(cosmosPrivateKey);
             expect(wallet.publicKey).toBeBytes(cosmosPublicKey);
         });
 
-        it('with custom prefix and path', () => {
-            const wallet = Sig.createWalletFromMnemonic(knownMnemonic, customPrefix, customPath);
+        it.skip('with custom password, default prefix, and default path', () => {
+        });
+
+        it('with default password, custom prefix, and custom path', () => {
+            const wallet = Sig.createWalletFromMnemonic(knownMnemonic, undefined, customPrefix, customPath);
             expect(wallet.address).toBe(customAddress);
             expect(wallet.privateKey).toBeBytes(customPrivateKey);
             expect(wallet.publicKey).toBeBytes(customPublicKey);
