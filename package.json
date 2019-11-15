@@ -21,7 +21,7 @@
         "dirs":           "mkdir -p dist",
         "dist:dev":       "yarn build:dev",
         "dist:prod":      "yarn build:prod && yarn gzip",
-        "docs":           "rm -rf docs/* && typedoc src/*.ts",
+        "docs":           "rm -rf docs/* && typedoc",
         "gzip":           "gzip -kf dist/*.{js,map}",
         "lint":           "eslint --ext .ts,.js .",
         "nuke":           "rm -rf **/node_modules yarn.lock",
