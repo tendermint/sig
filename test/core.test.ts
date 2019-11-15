@@ -1,3 +1,4 @@
+import './setup';
 import { fromSeed } from 'bip32';
 import * as Sig from '../';
 

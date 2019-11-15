@@ -1,3 +1,4 @@
+import './setup';
 import * as Sig from '../';
 
 describe('constants', () => {
