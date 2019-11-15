@@ -1,5 +1,5 @@
+import { Bytes } from '@tendermint/types';
 import createHash from 'create-hash';
-import { Bytes } from './types';
 
 /**
  * Hash bytes using SHA256.

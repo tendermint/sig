@@ -1,14 +1,25 @@
-import { mnemonicToSeedSync as bip39MnemonicToSeed } from 'bip39';
+import {
+    base64ToBytes,
+    bytesToBase64,
+    toCanonicalJSONBytes
+} from '@tendermint/belt';
+
+import {
+    Bech32String,
+    Bytes
+} from '@tendermint/types';
+
+import {
+    encode as bech32Encode,
+    toWords as bech32ToWords
+} from 'bech32';
 
 import {
     BIP32Interface,
     fromSeed as bip32FromSeed
 } from 'bip32';
 
-import {
-    encode as bech32Encode,
-    toWords as bech32ToWords
-} from 'bech32';
+import { mnemonicToSeedSync as bip39MnemonicToSeed } from 'bip39';
 
 import {
     publicKeyCreate as secp256k1PublicKeyCreate,
@@ -17,10 +28,19 @@ import {
 } from 'secp256k1';
 
 import {
-    Bech32String,
+    COSMOS_PREFIX,
+    COSMOS_PATH,
+    BROADCAST_MODE_SYNC
+} from './constants';
+
+import {
+    ripemd160,
+    sha256
+} from './hash';
+
+import {
     BroadcastMode,
     BroadcastTx,
-    Bytes,
     KeyPair,
     StdSignature,
     StdSignMsg,
@@ -29,24 +49,6 @@ import {
     SignMeta,
     Wallet
 } from './types';
-
-import {
-    base64ToBytes,
-    bytesToBase64
-} from './util';
-
-import {
-    ripemd160,
-    sha256
-} from './hash';
-
-import { toCanonicalJSONBytes } from './canonical';
-
-import {
-    COSMOS_PREFIX,
-    COSMOS_PATH,
-    BROADCAST_MODE_SYNC
-} from './constants';
 
 /**
  * Create a {@link Wallet|`Wallet`} from a known mnemonic.

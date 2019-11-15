@@ -1,27 +1,4 @@
-/**
- * A `Uint8Array` of binary data
- */
-export type Bytes = Uint8Array;
-
-/**
- * A Base64-encoded string.
- */
-export type Base64String = string;
-
-/**
- * A Bech32-encoded string.
- */
-export type Bech32String = string;
-
-/**
- * A "raw" binary-encoded string.
- */
-export type BinaryString = string;
-
-/**
- * A JSON-encoded string.
- */
-export type JSONString = string;
+import { Base64String, Bech32String, Bytes } from '@tendermint/types';
 
 /**
  * A private and public key pair.
@@ -129,27 +106,3 @@ export interface BroadcastTx {
     tx: StdTx;
     mode: BroadcastMode;
 }
-
-/**
- * A JSON object.
- */
-export interface JSONObject {
-    [key: string]: JSONValue;
-}
-
-/**
- * A JSON array.
- */
-export interface JSONArray extends Array<JSONValue> {
-}
-
-/**
- * A JSON value.
- */
-export type JSONValue =
-    string |
-    number |
-    boolean |
-    null |
-    JSONArray |
-    JSONObject;
