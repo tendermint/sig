@@ -126,7 +126,7 @@ const stdTx = signTx(tx, signMeta, wallet); // Wallet or privateKey / publicKey 
 {
     fee:        { amount: [{ amount: '0', denom: '' }], gas: '10000' },
     memo:       '',
-    msgs:       [{
+    msg:       [{
         type:  'cosmos-sdk/Send',
         value: {
             inputs:  [{
