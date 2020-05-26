@@ -101,16 +101,11 @@ const tx = {
     },
     memo: '',
     msgs: [{
-        type:  'cosmos-sdk/Send',
+        type:  'cosmos-sdk/MsgSend',
         value: {
-            inputs:  [{
-                address: 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
-                coins:   [{ amount: '1', denom: 'STAKE' }]
-            }],
-            outputs: [{
-                address: 'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
-                coins:   [{  amount: '1', denom: 'STAKE' }]
-            }]
+            from_address: 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
+            to_address:   'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
+            amount:       [{ amount: '1', denom: 'STAKE' }]
         }
     }]
 };
@@ -126,17 +121,12 @@ const stdTx = signTx(tx, signMeta, wallet); // Wallet or privateKey / publicKey 
 {
     fee:        { amount: [{ amount: '0', denom: '' }], gas: '10000' },
     memo:       '',
-    msg:       [{
-        type:  'cosmos-sdk/Send',
+    msgs:       [{
+        type:  'cosmos-sdk/MsgSend',
         value: {
-            inputs:  [{
-                'address': 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
-                'coins':   [{ amount: '1', denom: 'STAKE' }]
-            }],
-            outputs: [{
-                address: 'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
-                coins:   [{ amount: '1', denom: 'STAKE' }]
-            }]
+            from_address: 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
+            to_address:   'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
+            amount:       [{ amount: '1', denom: 'STAKE' }]
         }
     }],
     signatures: [{
