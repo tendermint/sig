@@ -100,7 +100,7 @@ const tx = {
         gas:    '10000'
     },
     memo: '',
-    msgs: [{
+    msg:  [{
         type:  'cosmos-sdk/MsgSend',
         value: {
             from_address: 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
@@ -119,19 +119,31 @@ const signMeta = {
 const stdTx = signTx(tx, signMeta, wallet); // Wallet or privateKey / publicKey pair; see example above
 /*
 {
-    fee:        { amount: [{ amount: '0', denom: '' }], gas: '10000' },
+    fee:        {
+        amount: [{
+            amount: '0',
+            denom:  ''
+        }],
+        gas:    '10000'
+    },
     memo:       '',
-    msgs:       [{
+    msg:        [{
         type:  'cosmos-sdk/MsgSend',
         value: {
             from_address: 'cosmos1qperwt9wrnkg5k9e5gzfgjppzpqhyav5j24d66',
             to_address:   'cosmos1yeckxz7tapz34kjwnjxvmxzurerquhtrmxmuxt',
-            amount:       [{ amount: '1', denom: 'STAKE' }]
+            amount:       [{
+                amount: '1',
+                denom:  'STAKE'
+            }]
         }
     }],
     signatures: [{
-        signature: 'uwQQzsubfzk/EwedKbZI/IDiXru5M6GuEBA2DZ+U7LVBwO80MFhU6ULA/5yjT8F0Bdx113VzS/GtbntazzNPwQ==',
-        pub_key:   { type: 'tendermint/PubKeySecp256k1', value: 'A58jKYIwA/eL8nEpyLBJG2boceJQuGuQ2ViXFRa5RBzT' }
+        signature: 'GLhQW+t36tjJW83avsBz6e7WUpkJyeAsmkrCJsnk/fkfA4q5nIVVwTF5HPQhFdkhMfAVKPFuvDmigRp+VQCwtg==',
+        pub_key:   {
+            type:  'tendermint/PubKeySecp256k1',
+            value: 'A58jKYIwA/eL8nEpyLBJG2boceJQuGuQ2ViXFRa5RBzT'
+        }
     }]
 }
 */
