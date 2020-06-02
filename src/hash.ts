@@ -1,3 +1,4 @@
+import { bufferToBytes } from '@tendermint/belt';
 import { Bytes } from '@tendermint/types';
 import createHash from 'create-hash';
 
@@ -8,8 +9,10 @@ import createHash from 'create-hash';
  *
  * @returns hashed bytes
  */
-export function sha256 (bytes: Bytes): Buffer {
-    return createHash('sha256').update(bytes).digest();
+export function sha256 (bytes: Bytes): Bytes {
+    const buffer = createHash('sha256').update(bytes).digest();
+
+    return bufferToBytes(buffer);
 }
 
 /**
@@ -19,6 +22,8 @@ export function sha256 (bytes: Bytes): Buffer {
  *
  * @returns hashed bytes
  */
-export function ripemd160 (bytes: Bytes): Buffer {
-    return createHash('ripemd160').update(bytes).digest();
+export function ripemd160 (bytes: Bytes): Bytes {
+    const buffer = createHash('ripemd160').update(bytes).digest();
+
+    return bufferToBytes(buffer);
 }

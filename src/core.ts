@@ -1,5 +1,6 @@
 import {
     base64ToBytes,
+    bufferToBytes,
     bytesToBase64,
     toCanonicalJSONBytes
 } from '@tendermint/belt';
@@ -23,8 +24,8 @@ import { mnemonicToSeedSync as bip39MnemonicToSeed } from 'bip39';
 
 import {
     publicKeyCreate as secp256k1PublicKeyCreate,
-    sign as secp256k1Sign,
-    verify as secp256k1Verify
+    ecdsaSign as secp256k1EcdsaSign,
+    ecdsaVerify as secp256k1EcdsaVerify
 } from 'secp256k1';
 
 import {
@@ -113,12 +114,13 @@ export function createWalletFromMasterKey (masterKey: BIP32Interface, prefix: st
  * @throws  will throw if a private key cannot be derived
  */
 export function createKeyPairFromMasterKey (masterKey: BIP32Interface, path: string = COSMOS_PATH): KeyPair {
-    const { privateKey } = masterKey.derivePath(path);
-    if (!privateKey) {
+    const buffer = masterKey.derivePath(path).privateKey;
+    if (!buffer) {
         throw new Error('could not derive private key');
     }
 
-    const publicKey = secp256k1PublicKeyCreate(privateKey, true);
+    const privateKey = bufferToBytes(buffer);
+    const publicKey  = secp256k1PublicKeyCreate(privateKey, true);
 
     return {
         privateKey,
@@ -231,7 +233,7 @@ export function createSignatureBytes (signMsg: StdSignMsg, privateKey: Bytes): B
 export function sign (bytes: Bytes, privateKey: Bytes): Bytes {
     const hash = sha256(bytes);
 
-    const { signature } = secp256k1Sign(hash, Buffer.from(privateKey));
+    const { signature } = secp256k1EcdsaSign(hash, privateKey);
 
     return signature;
 }
@@ -297,7 +299,7 @@ export function verifySignatureBytes (signMsg: StdSignMsg, signature: Bytes, pub
     const bytes = toCanonicalJSONBytes(signMsg);
     const hash  = sha256(bytes);
 
-    return secp256k1Verify(hash, Buffer.from(signature), Buffer.from(publicKey));
+    return secp256k1EcdsaVerify(signature, hash, publicKey);
 }
 
 /**

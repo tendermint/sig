@@ -1,4 +1,5 @@
 import './setup';
+import { bufferToBytes } from '@tendermint/belt';
 import { fromSeed } from 'bip32';
 import * as Sig from '../';
 
@@ -743,8 +744,8 @@ describe('core', () => {
         it('with known mnemonic', () => {
             const masterKey = Sig.createMasterKeyFromMnemonic(knownMnemonic);
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            expect(masterKey.privateKey!).toBeBytes(knownMasterKey.privateKey!);
-            expect(masterKey.publicKey).toBeBytes(knownMasterKey.publicKey);
+            expect(bufferToBytes(masterKey.privateKey!)).toBeBytes(bufferToBytes(knownMasterKey.privateKey!));
+            expect(bufferToBytes(masterKey.publicKey)).toBeBytes(bufferToBytes(knownMasterKey.publicKey));
         });
     });
 
