@@ -10,9 +10,10 @@ import createHash from 'create-hash';
  * @returns hashed bytes
  */
 export function sha256 (bytes: Bytes): Bytes {
-    const buffer = createHash('sha256').update(bytes).digest();
+    const buffer1 = (bytes instanceof Buffer) ? bytes : Buffer.from(bytes);
+    const buffer2 = createHash('sha256').update(buffer1).digest();
 
-    return bufferToBytes(buffer);
+    return bufferToBytes(buffer2);
 }
 
 /**
@@ -23,7 +24,8 @@ export function sha256 (bytes: Bytes): Bytes {
  * @returns hashed bytes
  */
 export function ripemd160 (bytes: Bytes): Bytes {
-    const buffer = createHash('ripemd160').update(bytes).digest();
+    const buffer1 = (bytes instanceof Buffer) ? bytes : Buffer.from(bytes);
+    const buffer2 = createHash('ripemd160').update(buffer1).digest();
 
-    return bufferToBytes(buffer);
+    return bufferToBytes(buffer2);
 }
