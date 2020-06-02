@@ -10,7 +10,7 @@ declare global {
 }
 
 expect.extend({
-    toBeBytes (received: Uint8Array, expected: Uint8Array | number[]): jest.CustomMatcherResult {
+    toBeBytes (received: Uint8Array, expected: Uint8Array | number[]) {
         if (!(received instanceof Uint8Array)) {
             return {
                 message: () => `expected ${ received } to be a Uint8Array`,
