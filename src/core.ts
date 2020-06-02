@@ -158,7 +158,7 @@ export function createAddress (publicKey: Bytes, prefix: string = COSMOS_PREFIX)
 export function signTx (tx: Tx | StdTx, meta: SignMeta, keyPair: KeyPair): StdTx {
     const signMsg    = createSignMsg(tx, meta);
     const signature  = createSignature(signMsg, keyPair);
-    const signatures = ('signatures' in tx) ? [...tx.signatures, signature] : [signature];
+    const signatures = (('signatures' in tx) && (tx.signatures != null)) ? [...tx.signatures, signature] : [signature];
 
     return {
         ...tx,
