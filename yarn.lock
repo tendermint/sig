@@ -1139,10 +1139,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@tendermint/belt@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@tendermint/belt/-/belt-0.2.3.tgz#b1551d313e58939324a8128639d862559a192d61"
-  integrity sha512-FOyojr48WhRd3k2kw3pLh4sCUIDH9XJbESABdD4lH5MSTOqZohuDxD3IQuyKg1jFGCO1xxBmR3TsNq1SVnNdpw==
+"@tendermint/belt@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@tendermint/belt/-/belt-0.3.0.tgz#09b50c50d7ab2967c0b6d42008c3f2ea33409994"
+  integrity sha512-3ZIsrbh9HLGM8cFyptK5iBeWou30srDiBjY8cVXFkz8aqPprt0OT7T9JqiqoG570x1pB0xiKwDDBxtQ120Gxug==
   dependencies:
     "@tendermint/types" "0.1.2"
 

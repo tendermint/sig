@@ -33,7 +33,7 @@
         "watch":          "yarn build:dev --watch"
     },
     "dependencies":    {
-        "@tendermint/belt":  "0.2.3",
+        "@tendermint/belt":  "0.3.0",
         "@tendermint/types": "0.1.2",
         "bech32":            "1.1.4",
         "bip32":             "2.0.5",
