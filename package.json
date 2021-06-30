@@ -14,6 +14,7 @@
     },
     "version":         "0.6.0",
     "main":            "index.js",
+    "types":           "index.d.ts",
     "scripts":         {
         "build":          "rm -rf dist/* && webpack --config build --progress --colors --display-error-details",
         "build:dev":      "NODE_ENV=development yarn build",
